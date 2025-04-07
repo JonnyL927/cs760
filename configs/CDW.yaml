@@ -1,0 +1,21 @@
+# arguments for dataset
+dataset: CDW
+data_root: "F:/dataset/CDW/"
+nclass: 5
+crop_size: 280
+
+# arguments for training
+epochs: 81 # 60
+batch_size: 6 # per GPU x 4 GPUs
+lr: 0.000005
+lr_multi: 40.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+
+# arguments for model
+model: dpt
+backbone: dinov2_small
+lock_backbone: True
