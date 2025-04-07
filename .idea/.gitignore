@@ -1,0 +1,11 @@
+# Default ignored files
+/../../UniMatch-V2 /.idea/shelf/
+/../../UniMatch-V2 /.idea/workspace.xml
+# Editor-based HTTP Client requests
+/../../UniMatch-V2 /.idea/httpRequests/
+# Datasource local storage ignored files
+/../../UniMatch-V2 /.idea/dataSources/
+/../../UniMatch-V2 /.idea/dataSources.local.xml
+*.pth
+*.pt
+*.ckpt
