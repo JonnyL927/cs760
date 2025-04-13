@@ -6,6 +6,7 @@
 # Datasource local storage ignored files
 /../../UniMatch-V2 /.idea/dataSources/
 /../../UniMatch-V2 /.idea/dataSources.local.xml
+/exp/
 *.pth
 *.pt
 *.ckpt

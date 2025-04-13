@@ -159,4 +159,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-#python test.py --config configs/CDW.yaml --model-path exp/CDW/unimatch_v2/output/dinov2_small_CDW/2/best.pth --save-path exp/CDW/unimatch_v2/predict
+#python test.py --config configs/CDW.yaml --model-path exp/CDW/unimatch_v2/output/dinov2_small_CDW/2/best.pth --save-path exp/CDW/unimatch_v2/test
