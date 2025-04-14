@@ -1,8 +1,8 @@
 import random
 
 # 输入和输出文件路径
-input_file = r'D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\5\5unlabeled.txt'
-output_file = r'D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\5\unlabeled.txt'
+input_file = r'F:\ZeroWaste\UniMatch-V2\splits\CDW\val.txt'
+output_file = r'F:\ZeroWaste\UniMatch-V2\splits\CDW\xxx.txt'
 
 # 读取所有行并打乱顺序
 with open(input_file, 'r', encoding='utf-8') as infile:

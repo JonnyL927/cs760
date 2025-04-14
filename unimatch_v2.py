@@ -147,6 +147,8 @@ def main():
         if rank == 0:
             logger.info('===========> Epoch: {:}, Previous best: {:.2f} @epoch-{:}, '
                         'EMA: {:.2f} @epoch-{:}'.format(epoch, previous_best, best_epoch, previous_best_ema, best_epoch_ema))
+            if epoch == cfg.get("warmup_epoch", 0):
+                logger.info("Warm-up complete, enter seme-supervised mode and start pseudo-labeling")
 
         total_loss  = AverageMeter()
         total_loss_x = AverageMeter()
@@ -167,41 +169,91 @@ def main():
             img_u_w, img_u_s1, img_u_s2 = img_u_w.cuda(), img_u_s1.cuda(), img_u_s2.cuda()
             ignore_mask, cutmix_box1, cutmix_box2 = ignore_mask.cuda(), cutmix_box1.cuda(), cutmix_box2.cuda()
 
-            with torch.no_grad():
-                pred_u_w = model_ema(img_u_w).detach()
-                conf_u_w = pred_u_w.softmax(dim=1).max(dim=1)[0]
-                mask_u_w = pred_u_w.argmax(dim=1)
+            # ===== control Warm-up stage =====
+            if epoch < cfg.get("warmup_epoch", 0):
+                pred_x = model(img_x)
+                loss_x = criterion_l(pred_x, mask_x)
+                loss_u_s = torch.tensor(0.0).cuda()  # dummy loss for logging
+                loss = loss_x
+                mask_ratio = 0.0
+            else:
+                with torch.no_grad():
+                    pred_u_w = model_ema(img_u_w).detach()
+                    conf_u_w = pred_u_w.softmax(dim=1).max(dim=1)[0]
+                    mask_u_w = pred_u_w.argmax(dim=1)
 
-            img_u_s1[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1] = img_u_s1.flip(0)[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1]
-            img_u_s2[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1] = img_u_s2.flip(0)[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1]
+                img_u_s1[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1] = img_u_s1.flip(0)[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1]
+                img_u_s2[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1] = img_u_s2.flip(0)[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1]
 
-            pred_x = model(img_x)
-            pred_u_s1, pred_u_s2 = model(torch.cat((img_u_s1, img_u_s2)), comp_drop=True).chunk(2)
+                pred_x = model(img_x)
+                pred_u_s1, pred_u_s2 = model(torch.cat((img_u_s1, img_u_s2)), comp_drop=True).chunk(2)
 
-            mask_u_w_cutmixed1, conf_u_w_cutmixed1, ignore_mask_cutmixed1 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
-            mask_u_w_cutmixed2, conf_u_w_cutmixed2, ignore_mask_cutmixed2 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
+                mask_u_w_cutmixed1, conf_u_w_cutmixed1, ignore_mask_cutmixed1 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
+                mask_u_w_cutmixed2, conf_u_w_cutmixed2, ignore_mask_cutmixed2 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
 
-            mask_u_w_cutmixed1[cutmix_box1 == 1] = mask_u_w.flip(0)[cutmix_box1 == 1]
-            conf_u_w_cutmixed1[cutmix_box1 == 1] = conf_u_w.flip(0)[cutmix_box1 == 1]
-            ignore_mask_cutmixed1[cutmix_box1 == 1] = ignore_mask.flip(0)[cutmix_box1 == 1]
+                mask_u_w_cutmixed1[cutmix_box1 == 1] = mask_u_w.flip(0)[cutmix_box1 == 1]
+                conf_u_w_cutmixed1[cutmix_box1 == 1] = conf_u_w.flip(0)[cutmix_box1 == 1]
+                ignore_mask_cutmixed1[cutmix_box1 == 1] = ignore_mask.flip(0)[cutmix_box1 == 1]
 
-            mask_u_w_cutmixed2[cutmix_box2 == 1] = mask_u_w.flip(0)[cutmix_box2 == 1]
-            conf_u_w_cutmixed2[cutmix_box2 == 1] = conf_u_w.flip(0)[cutmix_box2 == 1]
-            ignore_mask_cutmixed2[cutmix_box2 == 1] = ignore_mask.flip(0)[cutmix_box2 == 1]
+                mask_u_w_cutmixed2[cutmix_box2 == 1] = mask_u_w.flip(0)[cutmix_box2 == 1]
+                conf_u_w_cutmixed2[cutmix_box2 == 1] = conf_u_w.flip(0)[cutmix_box2 == 1]
+                ignore_mask_cutmixed2[cutmix_box2 == 1] = ignore_mask.flip(0)[cutmix_box2 == 1]
 
-            loss_x = criterion_l(pred_x, mask_x)
+                loss_x = criterion_l(pred_x, mask_x)
 
-            loss_u_s1 = criterion_u(pred_u_s1, mask_u_w_cutmixed1)
-            loss_u_s1 = loss_u_s1 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
-            loss_u_s1 = loss_u_s1.sum() / (ignore_mask_cutmixed1 != 255).sum().item()
+                loss_u_s1 = criterion_u(pred_u_s1, mask_u_w_cutmixed1)
+                loss_u_s1 = loss_u_s1 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
+                loss_u_s1 = loss_u_s1.sum() / (ignore_mask_cutmixed1 != 255).sum().item()
 
-            loss_u_s2 = criterion_u(pred_u_s2, mask_u_w_cutmixed2)
-            loss_u_s2 = loss_u_s2 * ((conf_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
-            loss_u_s2 = loss_u_s2.sum() / (ignore_mask_cutmixed2 != 255).sum().item()
+                loss_u_s2 = criterion_u(pred_u_s2, mask_u_w_cutmixed2)
+                loss_u_s2 = loss_u_s2 * ((conf_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
+                loss_u_s2 = loss_u_s2.sum() / (ignore_mask_cutmixed2 != 255).sum().item()
 
-            loss_u_s = (loss_u_s1 + loss_u_s2) / 2.0
+                loss_u_s = (loss_u_s1 + loss_u_s2) / 2.0
+                loss = (loss_x + loss_u_s) / 2.0
 
-            loss = (loss_x + loss_u_s) / 2.0
+                total_loss_s.update(loss_u_s.item())
+                mask_ratio = ((conf_u_w >= cfg['conf_thresh']) & (ignore_mask != 255)).sum().item() / (
+                            ignore_mask != 255).sum()
+                total_mask_ratio.update(mask_ratio.item())
+
+            # Do not consider warm-up:
+
+            # with torch.no_grad():
+            #     pred_u_w = model_ema(img_u_w).detach()
+            #     conf_u_w = pred_u_w.softmax(dim=1).max(dim=1)[0]
+            #     mask_u_w = pred_u_w.argmax(dim=1)
+            #
+            # img_u_s1[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1] = img_u_s1.flip(0)[cutmix_box1.unsqueeze(1).expand(img_u_s1.shape) == 1]
+            # img_u_s2[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1] = img_u_s2.flip(0)[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1]
+            #
+            # pred_x = model(img_x)
+            # pred_u_s1, pred_u_s2 = model(torch.cat((img_u_s1, img_u_s2)), comp_drop=True).chunk(2)
+            #
+            # mask_u_w_cutmixed1, conf_u_w_cutmixed1, ignore_mask_cutmixed1 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
+            # mask_u_w_cutmixed2, conf_u_w_cutmixed2, ignore_mask_cutmixed2 = mask_u_w.clone(), conf_u_w.clone(), ignore_mask.clone()
+            #
+            # mask_u_w_cutmixed1[cutmix_box1 == 1] = mask_u_w.flip(0)[cutmix_box1 == 1]
+            # conf_u_w_cutmixed1[cutmix_box1 == 1] = conf_u_w.flip(0)[cutmix_box1 == 1]
+            # ignore_mask_cutmixed1[cutmix_box1 == 1] = ignore_mask.flip(0)[cutmix_box1 == 1]
+            #
+            # mask_u_w_cutmixed2[cutmix_box2 == 1] = mask_u_w.flip(0)[cutmix_box2 == 1]
+            # conf_u_w_cutmixed2[cutmix_box2 == 1] = conf_u_w.flip(0)[cutmix_box2 == 1]
+            # ignore_mask_cutmixed2[cutmix_box2 == 1] = ignore_mask.flip(0)[cutmix_box2 == 1]
+            #
+            # loss_x = criterion_l(pred_x, mask_x)
+            #
+            # loss_u_s1 = criterion_u(pred_u_s1, mask_u_w_cutmixed1)
+            # loss_u_s1 = loss_u_s1 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
+            # loss_u_s1 = loss_u_s1.sum() / (ignore_mask_cutmixed1 != 255).sum().item()
+            #
+            # loss_u_s2 = criterion_u(pred_u_s2, mask_u_w_cutmixed2)
+            # loss_u_s2 = loss_u_s2 * ((conf_u_w_cutmixed2 >= cfg['conf_thresh']) & (ignore_mask_cutmixed2 != 255))
+            # loss_u_s2 = loss_u_s2.sum() / (ignore_mask_cutmixed2 != 255).sum().item()
+            #
+            # loss_u_s = (loss_u_s1 + loss_u_s2) / 2.0
+            #
+            # loss = (loss_x + loss_u_s) / 2.0
 
             optimizer.zero_grad()
             loss.backward()
@@ -209,9 +261,13 @@ def main():
 
             total_loss.update(loss.item())
             total_loss_x.update(loss_x.item())
-            total_loss_s.update(loss_u_s.item())
-            mask_ratio = ((conf_u_w >= cfg['conf_thresh']) & (ignore_mask != 255)).sum().item() / (ignore_mask != 255).sum()
-            total_mask_ratio.update(mask_ratio.item())
+
+            # total_loss_s.update(loss_u_s.item())
+            # if epoch >= cfg.get("warmup_epoch", 0):
+            #     total_loss_s.update(loss_u_s.item())
+            #
+            # mask_ratio = ((conf_u_w >= cfg['conf_thresh']) & (ignore_mask != 255)).sum().item() / (ignore_mask != 255).sum()
+            # total_mask_ratio.update(mask_ratio.item())
 
             iters = epoch * len(trainloader_u) + i
             lr = cfg['lr'] * (1 - iters / total_iters) ** 0.9
@@ -284,4 +340,4 @@ if __name__ == '__main__':
 
 # python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/2/labeled.txt --unlabeled-id-path=splits/CDW/2/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/2
 
-# python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/5/labeled.txt --unlabeled-id-path=splits/CDW/5/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/5
+# python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/5/labeled.txt --unlabeled-id-path=splits/CDW/5/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000

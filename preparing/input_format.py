@@ -8,16 +8,19 @@ import numpy as np
 # image_dir = r"F:\dataset\CDW\All" #F:\dataset\CDW\JPEGImages
 # mask_dir = r"D:\OneDrive - The University of Auckland\IVSlab\timber_images\mask" #F:\dataset\CDW\SegmentationClass
 
-image_dir = r"F:\dataset\CDW\5All"
-mask_dir = r"F:\dataset\RGB-D construction solid waste\Amanual\Amanual\mask"
-
+# image_dir = r"F:\dataset\CDW\5All"
+image_dir = r"F:\dataset\RGB-D construction solid waste\Bcp\Bcp"
+# mask_dir = r"F:\dataset\RGB-D construction solid waste\Amanual\Amanual\mask"
+mask_dir = r"F:\dataset\RGB-D construction solid waste\Bcp\300\mask"
 
 
 # # 输出目录
 # output_dir = r"D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\2"
 # resize_dir = r"F:\dataset\CDW"
 
-output_dir = r"D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\5"
+# output_dir = r"D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\5"
+output_dir = r"F:\ZeroWaste\UniMatch-V2\splits\CDW\5"
+
 resize_dir = r"F:\dataset\CDW"
 
 
