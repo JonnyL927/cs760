@@ -148,7 +148,7 @@ def main():
     for i, iou in enumerate(iou_class):
         logger.info('Class [{}] IoU: {:.2f}'.format(i, iou))
 
-    with open(os.path.join(args.save_path, 'test_results5.txt'), 'w') as f:
+    with open(os.path.join(args.save_path, 'test_results.2.txt'), 'w') as f:
         f.write('Mean IoU: {:.2f}\n'.format(mean_iou))
         for i, iou in enumerate(iou_class):
             f.write('Class [{}] IoU: {:.2f}\n'.format(i, iou))
@@ -160,3 +160,4 @@ if __name__ == '__main__':
     main()
 
 #python test.py --config configs/CDW.yaml --model-path exp/CDW/unimatch_v2/output/dinov2_small_CDW/2/best.pth --save-path exp/CDW/unimatch_v2/test
+

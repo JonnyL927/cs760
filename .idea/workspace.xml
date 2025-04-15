@@ -5,17 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d589ec8-e807-488d-bfab-3cf6fa125626" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/best.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/events.out.tfevents.1744718719.LAPTOP-D25J6GED.29244.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/events.out.tfevents.1744720165.LAPTOP-D25J6GED.3396.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/latest.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/events.out.tfevents.1744692427.LAPTOP-D25J6GED.6084.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/events.out.tfevents.1744693536.LAPTOP-D25J6GED.18668.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/events.out.tfevents.1744697679.LAPTOP-D25J6GED.17164.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/events.out.tfevents.1744697755.LAPTOP-D25J6GED.25436.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000_10epoch/best.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000_10epoch/events.out.tfevents.1744615102.LAPTOP-D25J6GED.18876.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000_10epoch/events.out.tfevents.1744692427.LAPTOP-D25J6GED.6084.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000_10epoch/latest.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/1111.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/1111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/174.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/202003300155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/photos/202004010213.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/videos/output_best600.2.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/predict/videos/output_best600.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/test/test_results.2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/preparing/convert_labelme_to_mask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/CDW.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/CDW.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/best.pth" beforeDir="false" afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/best.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/latest.pth" beforeDir="false" afterPath="$PROJECT_DIR$/exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000/latest.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict_video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preparing/input_format.py" beforeDir="false" afterPath="$PROJECT_DIR$/preparing/input_format.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preparing/shuffle_lines.py" beforeDir="false" afterPath="$PROJECT_DIR$/preparing/shuffle_lines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/2/labeled.txt" beforeDir="false" afterPath="$PROJECT_DIR$/splits/CDW/2/labeled.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/5/5labeled.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/5/5unlabeled.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/5/labeled.txt" beforeDir="false" afterPath="$PROJECT_DIR$/splits/CDW/5/labeled.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/5/unlabeled.txt" beforeDir="false" afterPath="$PROJECT_DIR$/splits/CDW/5/unlabeled.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splits/CDW/val.txt" beforeDir="false" afterPath="$PROJECT_DIR$/splits/CDW/val.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unimatch_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/unimatch_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,29 +80,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Convert_JPEGImages.executor&quot;: &quot;Run&quot;,
-    &quot;Python.input_format.executor&quot;: &quot;Run&quot;,
-    &quot;Python.predict.executor&quot;: &quot;Run&quot;,
-    &quot;Python.predict_video.executor&quot;: &quot;Run&quot;,
-    &quot;Python.shuffle_lines.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.tmp0.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OneDrive - The University of Auckland/IVSlab/project/zeroWaste/pytorch-deeplab-xception&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Convert_JPEGImages.executor": "Run",
+    "Python.input_format.executor": "Run",
+    "Python.predict.executor": "Run",
+    "Python.predict_video.executor": "Run",
+    "Python.shuffle_lines.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.tmp0.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "F:/ZeroWaste/UniMatch-V2/preparing",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\ZeroWaste\UniMatch-V2\preparing" />
       <recent name="D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2" />
       <recent name="D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\configs" />
     </key>
@@ -175,8 +203,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.predict_video" />
         <item itemvalue="Python.predict" />
+        <item itemvalue="Python.predict_video" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.Convert_JPEGImages" />
       </list>
@@ -216,7 +244,8 @@
       <workItem from="1744022009120" duration="176000" />
       <workItem from="1744536245498" duration="1446000" />
       <workItem from="1744538438061" duration="7960000" />
-      <workItem from="1744597795586" duration="9364000" />
+      <workItem from="1744597795586" duration="9804000" />
+      <workItem from="1744692358621" duration="27819000" />
     </task>
     <servers />
   </component>
@@ -260,12 +289,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="Linux-&gt;windows, yarm for CDW dataset" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/UniMatch_V2$predict.coverage" NAME="predict Coverage Results" MODIFIED="1744543953749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UniMatch_V2$predict.coverage" NAME="predict Coverage Results" MODIFIED="1744734837008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UniMatch_V2$shuffle_lines.coverage" NAME="shuffle_lines Coverage Results" MODIFIED="1744613573727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preparing" />
-    <SUITE FILE_PATH="coverage/UniMatch_V2$test.coverage" NAME="test Coverage Results" MODIFIED="1743507710511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UniMatch_V2$input_format.coverage" NAME="input_format Coverage Results" MODIFIED="1744611180711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preparing" />
+    <SUITE FILE_PATH="coverage/UniMatch_V2$input_format.coverage" NAME="input_format Coverage Results" MODIFIED="1744718193447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preparing" />
+    <SUITE FILE_PATH="coverage/UniMatch_V2$test.coverage" NAME="test Coverage Results" MODIFIED="1744735002111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UniMatch_V2$tmp0.coverage" NAME="tmp0 Coverage Results" MODIFIED="1742439936584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UniMatch_V2$Convert_JPEGImages.coverage" NAME="Convert_JPEGImages Coverage Results" MODIFIED="1743482249135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UniMatch_V2$predict_video.coverage" NAME="predict_video Coverage Results" MODIFIED="1744544367517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UniMatch_V2$predict_video.coverage" NAME="predict_video Coverage Results" MODIFIED="1744734761600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

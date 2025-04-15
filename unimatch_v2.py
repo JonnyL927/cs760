@@ -133,7 +133,8 @@ def main():
         checkpoint = torch.load(os.path.join(args.save_path, 'latest.pth'), map_location='cpu')
         model.load_state_dict(checkpoint['model'])
         model_ema.load_state_dict(checkpoint['model_ema'])
-        optimizer.load_state_dict(checkpoint['optimizer'])
+        # In second stage, hyper-parameters are modified
+        # optimizer.load_state_dict(checkpoint['optimizer'])
         epoch = checkpoint['epoch']
         previous_best = checkpoint['previous_best']
         previous_best_ema = checkpoint['previous_best_ema']
@@ -340,4 +341,4 @@ if __name__ == '__main__':
 
 # python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/2/labeled.txt --unlabeled-id-path=splits/CDW/2/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/2
 
-# python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/5/labeled.txt --unlabeled-id-path=splits/CDW/5/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_600-3000
+# python unimatch_v2.py --config=configs/CDW.yaml --labeled-id-path=splits/CDW/5/labeled.txt --unlabeled-id-path=splits/CDW/5/unlabeled.txt --save-path=exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2

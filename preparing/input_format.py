@@ -19,9 +19,11 @@ mask_dir = r"F:\dataset\RGB-D construction solid waste\Bcp\300\mask"
 # resize_dir = r"F:\dataset\CDW"
 
 # output_dir = r"D:\OneDrive - The University of Auckland\IVSlab\project\zeroWaste\UniMatch-V2\splits\CDW\5"
-output_dir = r"F:\ZeroWaste\UniMatch-V2\splits\CDW\5"
+# output_dir = r"F:\ZeroWaste\UniMatch-V2\splits\CDW\5"
+output_dir = r"F:\ZeroWaste"
 
-resize_dir = r"F:\dataset\CDW"
+resize_dir = r'F:\ZeroWaste'
+# resize_dir = r"F:\dataset\CDW"
 
 
 # 创建输出目录
@@ -68,10 +70,10 @@ for image_filename in tqdm(image_filenames, desc="Processing Images"):
 
             # 标签颜色映射
             label_map = {
-                (0, 128, 0): 1,  # wood/timber
-                (0, 0, 128): 2,  # rubber
-                (128, 0, 0): 3,  # brick
-                (128, 128, 0): 4  # concrete
+                (0, 0, 128): 1,  # wood/timber 蓝
+                (0, 128, 0): 2,  # concrete 绿
+                (128, 0, 0): 3,  # brick 红
+                (128, 128, 0): 4  # rubber 黄
             }
 
             # 遍历每种颜色，标记对应类别

@@ -5,8 +5,8 @@ nclass: 5
 crop_size: 280
 
 # arguments for training
-epochs: 10 # 60
-batch_size: 12 # per GPU x 4 GPUs
+epochs: 50 # 60
+batch_size: 8 # per GPU x 4 GPUs
 lr: 0.000005
 lr_multi: 40.0
 criterion:
@@ -18,5 +18,9 @@ conf_thresh: 0.95
 # arguments for model
 model: dpt
 backbone: dinov2_small
-lock_backbone: True
+lock_backbone: False
 warmup_epoch: 10
+
+
+
+

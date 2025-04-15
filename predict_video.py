@@ -9,11 +9,11 @@ from torchvision import transforms
 import os
 
 PALETTE = [
-    [0, 0, 0],         # background
-    [128, 0, 0],       # timber (red)
-    [0, 0, 128],       # rubber (blue)
-    [0, 128, 0],       # brick (green)
-    [128, 128, 0]      # concrete (yellow)
+    [0, 0, 0],
+    [128, 0, 0],    #timber     red
+    [0, 128, 0],    #concrete   green
+    [0, 0, 128],    #brick      blue
+    [128, 128, 0]   #rubber     yellow
 ]
 
 def colorize_mask(mask, palette):
@@ -57,9 +57,9 @@ def predict(model, tensor, ori_size, palette):
 
 if __name__ == '__main__':
     config_path = 'configs/CDW.yaml'
-    model_path = 'exp/CDW/unimatch_v2/output/dinov2_small_CDW/5/best.pth'
+    model_path = 'exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/best.pth'
     video_path = r'D:\OneDrive - The University of Auckland\IVSlab\timber_video\timber_video\IMG_3165.MP4.MP4'
-    save_path = 'exp/CDW/unimatch_v2/predict/videos/output_best.mp4'
+    save_path = 'exp/CDW/unimatch_v2/predict/videos/output_best600.2.mp4'
     numberOfClass = 5
     image_size = [518, 518]
 

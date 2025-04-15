@@ -56,5 +56,5 @@ CLASSES = {'pascal': ['background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bot
                       'clock', 'flag'],
 
                        # 自己添加
-                       'CDW': ['background', 'timber', 'rubber', 'brick','concrete']
+                       'CDW': ['background', 'timber', 'concrete', 'brick', 'rubber']
            }

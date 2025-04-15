@@ -97,11 +97,11 @@ def color_map(dataset='pascal'):
 
             cmap[i] = np.array([r, g, b])
     elif dataset == 'CDW':
-        cmap[0] = np.array([0, 0, 0])
+        cmap[0] = np.array([0, 0, 0]) #bg
         cmap[1] = np.array([128, 0, 0]) #timber, 合并了wood
-        cmap[2] = np.array([0, 0, 128])
-        cmap[3] = np.array([0, 128, 0]) #brick 原本是wood
-        cmap[4] = np.array([128, 128, 0])
+        cmap[2] = np.array([0, 128, 0]) #concrete green
+        cmap[3] = np.array([0, 0, 128]) #brick 原本是wood
+        cmap[4] = np.array([128, 128, 0]) #rubber yellow
     elif dataset == 'cityscapes':
         cmap[0] = np.array([128, 64, 128])
         cmap[1] = np.array([244, 35, 232])

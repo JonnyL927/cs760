@@ -1,0 +1,6 @@
+Mean IoU: 91.20
+Class [0] IoU: 93.32
+Class [1] IoU: 77.30
+Class [2] IoU: 94.80
+Class [3] IoU: 95.21
+Class [4] IoU: 95.36

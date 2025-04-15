@@ -18,9 +18,9 @@ from torchvision import transforms
 PALETTE = [
     [0, 0, 0],
     [128, 0, 0], #timber red
-    [0, 0, 128], #rubber blue
-    [0, 128, 0], #brick green
-    [128, 128, 0] #concrete yellow
+    [0, 128, 0], #concrete green
+    [0, 0, 128], #brick blue
+    [128, 128, 0] #rubber yellow
 ]
 
 def colorize_mask(mask, palette):
@@ -68,9 +68,10 @@ def predict(model, img_tensor, ori_size, palette):
 
 if __name__ == '__main__':
     config_path = 'configs/CDW.yaml'
-    model_path = 'exp/CDW/unimatch_v2/output/dinov2_small_CDW/5/best.pth'
-    img_path = 'F:/dataset/CDW/JPEGImages/202003300224.jpg'
-    save_path = 'exp/CDW/unimatch_v2/predict/photos/output_best5.png'
+    model_path = 'exp/CDW/unimatch_v2/output/dinov2_small_CDW/5_0.2/best.pth'
+    img_path = 'F:/dataset/CDW/JPEGImages_full/202004010213.jpg'
+    # img_path = r'F:\dataset\RGB-D construction solid waste\Amanual\Amanual\202003300155.png'
+    save_path = 'exp/CDW/unimatch_v2/predict/photos/202004010213.2.png'
     numberOfClass = 5
     image_size = [518, 518]
 
